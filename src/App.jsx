@@ -85,14 +85,8 @@ const Home = () => {
   };
 
   const handleSendWhatsApp = (record) => {
-    const message = `*${record.temasrelevantes}*\n${record.incidente}\n${
-      record.cuerpo
-    }\n${dayjs(record.FechaInicio.toDate()).format("DD/MM/YYYY HH:mm")}\n${
-      record.FechaFin
-        ? dayjs(record.FechaFin.toDate()).format("DD/MM/YYYY HH:mm")
-        : ""
-    }`;
-    const url = `https://wa.me/3400498587?text=${encodeURIComponent(message)}`;
+    const message = `*${formData.temasrelevantes}*\n*${formData.incidente}*\n${formData.cuerpo}\nInicio: ${dayjs(formData.FechaInicio.toDate()).format('DD/MM/YYYY HH:mm')}\nFin: ${formData.FechaFin ? dayjs(formData.FechaFin.toDate()).format('DD/MM/YYYY HH:mm') : ''}`;
+    const url = `https://wa.me/543400498587&text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
   };
 
