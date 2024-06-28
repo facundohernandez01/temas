@@ -43,16 +43,8 @@ import {
 import { db } from "./firebase";
 import dayjs from "dayjs";
 import Form from "./Form";
-import { makeStyles } from '@mui/styles';
 
-const useStyles = makeStyles((theme) => ({
-  popper: {
-    zIndex: theme.zIndex.tooltip,
-  },
-  basePopperroot: {
-    // Your custom styles
-  }
-}));
+
 
 const Home = () => {
   const navigate = useNavigate();
@@ -62,7 +54,6 @@ const Home = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
 
-  const classes = useStyles();
   useEffect(() => {
     const q = query(
       collection(db, "statusnotif"),
@@ -152,7 +143,6 @@ const Home = () => {
                     open={open === record.id}
                     anchorEl={anchorEl}
                     id={`popper-${record.id}`}
-                    className={classes.popper}
                   >
                     {({ TransitionProps }) => (
                           <Box sx={{ backgroundColor: '#000', color: '#fff', p: 2 }}>{record.cuerpo}</Box>
