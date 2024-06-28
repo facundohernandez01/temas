@@ -124,16 +124,16 @@ const Home = () => {
           <Grid item xs={12} key={record.id}>
             <Paper style={{ padding: "1rem" }}>
               <Grid container spacing={2} alignItems="center">
-                <Grid item xs={4}>
-                  {dayjs(record.FechaInicio.toDate()).format("DD/MM/YYYY")}
-                  <br></br>
-                  {record.incidente}
-                </Grid>
-                <Grid item xs={4}
+                <Grid item xs={9}
                     onMouseEnter={(event) => handleMouseEnter(event, record)}
                     onMouseLeave={handleMouseLeave}
                     aria-describedby={`popper-${record.id}`}
+                    onClick={() => navigate(`/form/${record.id}`)}
                   >
+                  {dayjs(record.FechaInicio.toDate()).format("DD/MM/YYYY")}
+                  <br></br>
+                  {record.incidente}
+                  <br></br>
                     {record.cuerpo.length > 20
                       ? `${record.cuerpo.slice(0, 20)}...`
                       : record.cuerpo}
