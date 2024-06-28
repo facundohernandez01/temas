@@ -67,9 +67,10 @@ const Form = () => {
     };
 
     const handleSendWApp = () => {
-        const message = `*${formData.temasrelevantes}*\n*${formData.incidente}*\n${formData.cuerpo}\nInicio: ${dayjs(formData.FechaInicio.toDate()).format('DD/MM/YYYY HH:mm')}\nFin: ${formData.FechaFin ? dayjs(formData.FechaFin.toDate()).format('DD/MM/YYYY HH:mm') : ''}`;
-        const url = `https://wa.me/3400498587?text=${encodeURIComponent(message)}`;
-        window.open(url, '_blank');
+        const message = `*${record.temasrelevantes}*\n*${record.incidente}*\n${record.cuerpo}\nInicio: ${dayjs(record.FechaInicio.toDate()).format("DD/MM/YYYY HH:mm")}\nFin: ${record.FechaFin ? dayjs(record.FechaFin.toDate()).format("DD/MM/YYYY HH:mm") : ""}`;
+        const phone = '543400498587';  // Asegúrate de que el número esté correctamente formateado
+        const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        window.open(url, "_blank");
     };
 
     const handleCopyMessage = () => {
@@ -135,22 +136,25 @@ const Form = () => {
                         />
                     </Grid>
                 </Grid>
-                <Grid container spacing={2} justifyContent="flex-end" style={{ marginTop: '1rem' }}>
-                    <Grid item>
-                        <Button variant="contained" color="primary" onClick={handleSubmit}>
-                            Guardar
-                        </Button>
+                <Grid container spacing={3} justifyContent="flex-end" style={{ marginTop: '1rem' }}>
+                <Grid item>
+                        <IconButton color="primary" onClick={handleSendWApp}>
+                            <WhatsApp /> {/* Ícono de WhatsApp */}
+                        </IconButton>
                     </Grid>
-                    <Grid item>
+                     <Grid item>
                         <IconButton color="primary" onClick={handleCopyMessage}>
                             <ContentCopyIcon /> {/* Ícono de copiar contenido */}
                         </IconButton>
                     </Grid>
                     <Grid item>
-                        <IconButton color="primary" onClick={handleSendWApp}>
-                            <WhatsApp /> {/* Ícono de WhatsApp */}
-                        </IconButton>
+                        <Button variant="contained" color="primary" onClick={handleSubmit}>
+                            Guardar
+                        </Button>
                     </Grid>
+                    <Grid item></Grid>
+
+
                 </Grid>
             </Container>
         </LocalizationProvider>
