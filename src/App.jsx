@@ -85,11 +85,12 @@ const Home = () => {
   };
 
   const handleSendWhatsApp = (record) => {
-    const message = `*${formData.temasrelevantes}*\n*${formData.incidente}*\n${formData.cuerpo}\nInicio: ${dayjs(formData.FechaInicio.toDate()).format('DD/MM/YYYY HH:mm')}\nFin: ${formData.FechaFin ? dayjs(formData.FechaFin.toDate()).format('DD/MM/YYYY HH:mm') : ''}`;
-    const url = `https://wa.me/543400498587&text=${encodeURIComponent(message)}`;
+    const message = `*${record.temasrelevantes}*\n*${record.incidente}*\n${record.cuerpo}\nInicio: ${dayjs(record.FechaInicio.toDate()).format("DD/MM/YYYY HH:mm")}\nFin: ${record.FechaFin ? dayjs(record.FechaFin.toDate()).format("DD/MM/YYYY HH:mm") : ""}`;
+    const phone = '543400498587';  // Asegúrate de que el número esté correctamente formateado
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
   };
-
+  
   const filteredRecords = records.filter(record =>
     record.cuerpo.toLowerCase().includes(searchTerm.toLowerCase())
   );

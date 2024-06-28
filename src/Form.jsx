@@ -68,7 +68,7 @@ const Form = () => {
 
     const handleSendWApp = () => {
         const message = `*${formData.temasrelevantes}*\n*${formData.incidente}*\n${formData.cuerpo}\nInicio: ${dayjs(formData.FechaInicio.toDate()).format('DD/MM/YYYY HH:mm')}\nFin: ${formData.FechaFin ? dayjs(formData.FechaFin.toDate()).format('DD/MM/YYYY HH:mm') : ''}`;
-        const url = `https://wa.me/3400498587&text=${encodeURIComponent(message)}`;
+        const url = `https://wa.me/3400498587?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
     };
 
